@@ -1,22 +1,18 @@
 import psutil  # type: ignore
 import time
+import logging
 from plyer import notification
-import argparse
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Battery monitoring")
-    parser.add_argument("--low", type=int, default=20, help="Low battery level (%)")
-    parser.add_argument("--high", type=int, default=82, help="High battery level (%)")
-    return parser.parse_args()
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-def check_battery(low_threshold, high_threshold):
+def check_battery(low_threshold, high_threshold, interval):
     alerted_low = False
     alerted_high = False
 
     while True:
         battery = psutil.sensors_battery()
         if not battery:
-            print("No battery detected or sensors not available.")
+            logging.error("No battery detected or sensors not available.")
             break
 
         percent = battery.percent
@@ -28,6 +24,7 @@ def check_battery(low_threshold, high_threshold):
                 message=f"Battery at {percent}%. Connect to charger!",
                 timeout=10
             )
+            logging.info("Low battery notification sent.")
             alerted_low = True
             alerted_high = False
 
@@ -37,17 +34,13 @@ def check_battery(low_threshold, high_threshold):
                 message=f"Battery at {percent}%. Disconnect from charger!",
                 timeout=10
             )
+            logging.info("Charged notification sent.")
             alerted_high = True
             alerted_low = False
-
 
         if percent > low_threshold and not charging:
             alerted_low = False
         if percent < high_threshold and charging:
             alerted_high = False
 
-        time.sleep(60)  
-
-if __name__ == "__main__":
-    args = parse_args()
-    check_battery(args.low, args.high)
+        time.sleep(interval)

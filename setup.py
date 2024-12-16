@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="bettery-alert",
-    version="0.0.1",
+    name="battery-alert",
+    version="0.1.0",
     author="Felipe Castro",
     author_email="felipe.castro@pinnsystem.com",
     description="Tool to alert about battery levels",
@@ -15,8 +15,8 @@ setup(
         "plyer",
     ],
     entry_points={
-        "console_scripts": [
-            "bettery-alert=battery_alert.core:main",
+        'console_scripts': [
+            'battery-alert=battery_alert.cli:main',  
         ],
     },
     classifiers=[

@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: battery-alert
+Source: https://github.com/castroofelipee/Battery-Alert.git
+
+Files: *
+Copyright: 2025, Felipe Castro
+License: MIT

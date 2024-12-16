@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "battery"
+name = "battery-alert"
 version = "0.1.0"
 description = ""
 authors = ["Felipe Castro"]
@@ -9,6 +9,10 @@ readme = "README.md"
 python = "^3.10"
 psutil = "^6.1.0"
 plyer = "^2.1.0"
+typer = "^0.15.1"
+
+[tool.poetry.scripts]
+battery-alert = "battery_alert.cli:main"
 
 
 [build-system]

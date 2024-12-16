@@ -1,0 +1,13 @@
+Source: battery-alert
+Section: utils
+Priority: optional
+Maintainer: Felipe Castro <felipe.castro@pinnsystem.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3, python3-setuptools
+Standards-Version: 4.6.0
+Homepage: https://github.com/castroofelipee/Battery-Alert.git
+
+Package: battery-alert
+Architecture: all
+Depends: ${misc:Depends}, python3, python3-psutil, python3-plyer
+Description: Battery alert tool
+ A Python tool to monitor battery levels and send notifications.
