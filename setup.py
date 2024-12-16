@@ -8,7 +8,7 @@ setup(
     description="Tool to alert about battery levels",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/castroofelipee/battery-alert",
+    url="https://github.com/castroofelipee/Battery-Alert.git",
     packages=find_packages(),
     install_requires=[
         "psutil",
